@@ -4,7 +4,7 @@
 #' Get ephemeris data from ssp.imcce.fr
 #'
 #' `epherermis` does not do an actual calculation of ephemeris data. Rather, it
-#' gets such information from a server at 
+#' gets such information from a server at
 #' \url{https://ssp.imcce.fr/webservices/miriade/api/ephemcc/}.
 #'
 #' @param name character value of object in question, e.g. `"s:Sun"` for the sun and
@@ -50,10 +50,11 @@
 #' @references
 #' \url{https://ssp.imcce.fr/webservices/miriade/api/ephemcc/}
 #'
+#' @importFrom utils read.csv
 #' @export
 ephemeris <- function(name="s:Sun", longitude=0, latitude=0, t0=Sys.Date(), nbd=5, step=1, debug=TRUE)
 {
-    t0string <- format(t0,"%Y-%m-%d&nbsp;12h")  
+    t0string <- format(t0,"%Y-%m-%d&nbsp;12h")
     query <- paste0("https://ssp.imcce.fr/webservices/miriade/api/ephemcc.php?",
                     "-name=", name,
                     "&-type=",

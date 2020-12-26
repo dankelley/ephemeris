@@ -2,7 +2,9 @@ Package: ephemeris
 Type: Package
 Title: Download epheremis data
 Version: 0.1.0
-Author: Dan Kelley
+Authors@R: c(
+    person(given="Dan", family="Kelley", email="dan.kelley@dal.ca", role=c("aut", "cre"),
+        comment=c(ORCID="https://orcid.org/0000-0001-7808-5911")))
 Maintainer: Dan Kelley <dan.kelley@dal.ca>
 Description: This package is an interface to a website that provides ephemeris
     data (positions of the moon, sun, etc. in the sky).
