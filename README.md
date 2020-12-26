@@ -22,7 +22,8 @@ library(epheremis)
 example(epheremis)
 ```
 produces the following.
-![dan](ex1.png)
+
+![Example 1.](ex1.png)
 
 ## Limitations and Bugs
 
