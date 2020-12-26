@@ -1,11 +1,9 @@
-# Ephemeris downloader
+# Ephemeris R package
 
 ## Overview
 
-`eph.R` is an R script to download and plot Ephemeris data from a server.  The
-query used for the download is constructed from only a cursory glance at the
-rather extensive documentation (see Resource 1), and so this is really quite
-limited.
+The key function in this package is `epheremis()`, which downloads and extends
+Ephemeris data from a server (reference 1).
 
 ## Installation
 
@@ -30,7 +28,7 @@ produces the following.
 1. The time step must be in integral days. (In theory we can give e.g. `"1 h"`
    but that seems to fail in my tests.)
 
-# Resources
+# References
 
 1. https://ssp.imcce.fr/webservices/miriade/api/ephemcc/
 
