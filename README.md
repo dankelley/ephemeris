@@ -14,12 +14,12 @@ remotes::install_github("dankelley/ephemeris")
 
 ## Example
 
-The example
+Running the example
 ```R
 library(epheremis)
 example(epheremis)
 ```
-produces the following.
+on 2020-12-25 produced the following.
 
 ![Example 1.](ex1.png)
 
