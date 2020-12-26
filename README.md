@@ -11,7 +11,7 @@ limited.
 
 Use
 ```R
-Rscript esph.R
+Rscript eph.R
 ```
 to create a simple plot of 28 days of data, starting at the present time.
 
