@@ -37,3 +37,4 @@ vignettes/*.pdf
 *~
 *.pdf
 .DS_Store
+test*txt
