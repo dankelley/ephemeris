@@ -1,0 +1,13 @@
+Package: ephemeris
+Type: Package
+Title: Download epheremis data
+Version: 0.1.0
+Author: Dan Kelley
+Maintainer: Dan Kelley <dan.kelley@dal.ca>
+Description: This package is an interface to a website that provides ephemeris
+    data (positions of the moon, sun, etc. in the sky).
+License: GPL (>= 2)
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.1.1
+Roxygen: list(markdown = TRUE)

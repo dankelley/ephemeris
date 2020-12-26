@@ -7,13 +7,22 @@ query used for the download is constructed from only a cursory glance at the
 rather extensive documentation (see Resource 1), and so this is really quite
 limited.
 
-## Usage
+## Installation
 
-Use
+`epheremis` is not on CRAN, but may be installed with
 ```R
-Rscript eph.R
+remotes::install_github("dankelley/ephemeris")
 ```
-to create a simple plot of 28 days of data, starting at the present time.
+
+## Example
+
+The example
+```R
+library(epheremis)
+example(epheremis)
+```
+produces the following.
+![dan](ex1.png)
 
 ## Limitations and Bugs
 

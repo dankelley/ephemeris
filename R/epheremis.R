@@ -1,8 +1,11 @@
 # See README.md and Makefile
 
-library(oce)
 
 #' Get ephemeris data from ssp.imcce.fr
+#'
+#' `epherermis` does not do an actual calculation of ephemeris data. Rather, it
+#' gets such information from a server at 
+#' \url{https://ssp.imcce.fr/webservices/miriade/api/ephemcc/}.
 #'
 #' @param name character value of object in question, e.g. `"s:Sun"` for the sun and
 #' `"s:Moon"` for the moon.  If not supplied, `"s:Sun"` is used.
@@ -21,11 +24,34 @@ library(oce)
 #' @param debug logical value indicating whether to print debugging information. At the moment,
 #' the only information printed is the query string.
 #'
+#' @return a data frame containing columna named
+#' `"time"`, `"RA"`, `"RAdeg"`, `"DEC"`, `"DECdeg"`, `"Dobs"`, `"VMag"`, `"Phase"`, `"Elong."`,
+#' `"dRAcosDEC"`, `"dDEC"`, and `"RV"`.  All items except those ending in `deg` are as is
+#' returned form the sever.  However, since the angles `"RA"` and `"DEC"` are in a non-numeric
+#' format, `epheremis` computes degimal forms, stored in `"RAdeg"` and `DECdeg"`.
+#'
+#' @examples
+#' # Plot Right Ascension and Declination over a 28-day period.
+#' library(ephemeris)
+#' s <- ephemeris(nbd=28, step=1)
+#' m <- ephemeris("s:Moon", nbd=28, step=1)
+#' par(mfrow=c(2, 1), mar=c(3,3,1,2), mgp=c(2,0.7,0))
+#' RAlim <- range(c(s$RAdeg, m$RAdeg))
+#' plot(s$time, s$RAdeg, type="o", xlab="", ylab="Right Ascension", col=2, ylim=RAlim)
+#' lines(m$time, m$RAdeg, col=4, type="o")
+#' mtext("Red: sun", col=2, adj=0)
+#' mtext("Blue: moon", col=4, adj=1)
+#' DEClim <- range(c(s$DECdeg, m$DECdeg))
+#' plot(s$time, s$DECdeg, type="o", xlab="", ylab="Declination", col=2, ylim=DEClim)
+#' lines(m$time, m$DECdeg, col=4, type="o")
+#'
 #' @author Dan Kelley
 #'
 #' @references
 #' \url{https://ssp.imcce.fr/webservices/miriade/api/ephemcc/}
-getEphemeris <- function(name="s:Sun", longitude=0, latitude=0, t0=Sys.Date(), nbd=5, step=1, debug=TRUE)
+#'
+#' @export
+ephemeris <- function(name="s:Sun", longitude=0, latitude=0, t0=Sys.Date(), nbd=5, step=1, debug=TRUE)
 {
     t0string <- format(t0,"%Y-%m-%d&nbsp;12h")  
     query <- paste0("https://ssp.imcce.fr/webservices/miriade/api/ephemcc.php?",
@@ -65,18 +91,4 @@ getEphemeris <- function(name="s:Sun", longitude=0, latitude=0, t0=Sys.Date(), n
     data$time <- as.POSIXct(data$time, tz="UTC")
     data
 }
-
-s <- getEphemeris(nbd=28, step=1)
-m <- getEphemeris("s:Moon", nbd=28, step=1)
-
-par(mfrow=c(2, 1))
-
-RAlim <- range(c(s$RAdeg, m$RAdeg))
-oce.plot.ts(s$time, s$RAdeg, type="o", ylab="Right Ascension", col=2, ylim=RAlim, grid=TRUE)
-lines(m$time, m$RAdeg, col=4, type="o")
-
-DEClim <- range(c(s$DECdeg, m$DECdeg))
-oce.plot.ts(s$time, s$DECdeg, type="o", ylab="Declination", col=2, ylim=DEClim, drawTimeRange=FALSE, grid=TRUE)
-lines(m$time, m$DECdeg, col=4, type="o")
-mtext("Red: sun; Blue: moon")
 
