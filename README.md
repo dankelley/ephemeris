@@ -1,6 +1,6 @@
 # Ephemeris R package
 
-[![R build status](https://github.com/dankelley/epheremis/workflows/R-CMD-check/badge.svg)](https://github.com/dankelley/epheremis/actions)
+[![R build status](https://github.com/dankelley/ephemeris/workflows/R-CMD-check/badge.svg)](https://github.com/dankelley/ephemeris/actions)
 
 
 ## Overview
