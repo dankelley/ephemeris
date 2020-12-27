@@ -7,7 +7,8 @@
 ## Overview
 
 The only function in this package is `ephemeris()`, which downloads and extends
-Ephemeris data from a server (reference 1).
+Ephemeris data from a server (reference 1). This is still in development, and
+user feedback would be appreciated.
 
 ## Installation
 
