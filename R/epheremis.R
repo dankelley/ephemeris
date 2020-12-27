@@ -1,11 +1,10 @@
 # See README.md and Makefile
 
 
-#' Get ephemeris data from ssp.imcce.fr
+#' Get ephemeris data
 #'
-#' `ephemeris` infers the ephemeris data by querying
-#' \url{https://ssp.imcce.fr/webservices/miriade/api/ephemcc/}, and so
-#' a working web connection is required for it to work.
+#' This function infers ephemeris data by querying a website (reference 1),
+#' and so it requires a web connection to work.
 #'
 #' @param name character value of object in question, e.g. `"s:Sun"` for the sun and
 #' `"s:Moon"` for the moon.  Default: `"s:Sun"`.
@@ -48,7 +47,9 @@
 #' @author Dan Kelley
 #'
 #' @references
-#' \url{https://ssp.imcce.fr/webservices/miriade/api/ephemcc/}
+#' 1. The *Institut de mécanique céleste et de calcul des éphémérides* website
+#' \url{https://ssp.imcce.fr/webservices/miriade/api/ephemcc/} is the source of
+#' data returned by `ephemeris`.
 #'
 #' @importFrom utils read.csv
 #' @export

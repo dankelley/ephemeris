@@ -2,7 +2,7 @@
 % Please edit documentation in R/epheremis.R
 \name{ephemeris}
 \alias{ephemeris}
-\title{Get ephemeris data from ssp.imcce.fr}
+\title{Get ephemeris data}
 \usage{
 ephemeris(
   name = "s:Sun",
@@ -40,9 +40,8 @@ returned form the sever.  However, since the angles \code{"RA"} and \code{"DEC"}
 format, \code{ephemeris} computes degimal forms, stored in \code{"RAdeg"} and \verb{DECdeg"}.
 }
 \description{
-\code{ephemeris} infers the ephemeris data by querying
-\url{https://ssp.imcce.fr/webservices/miriade/api/ephemcc/}, and so
-a working web connection is required for it to work.
+This function infers ephemeris data by querying a website (reference 1),
+and so it requires a web connection to work.
 }
 \examples{
 # Plot daily Right Ascension and Declination values over a 28-day period.
@@ -61,7 +60,11 @@ lines(m$time, m$DECdeg, col=4, type="o")
 
 }
 \references{
-\url{https://ssp.imcce.fr/webservices/miriade/api/ephemcc/}
+\enumerate{
+\item The \emph{Institut de mécanique céleste et de calcul des éphémérides} website
+\url{https://ssp.imcce.fr/webservices/miriade/api/ephemcc/} is the source of
+data returned by \code{ephemeris}.
+}
 }
 \author{
 Dan Kelley

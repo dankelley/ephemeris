@@ -8,8 +8,10 @@ Authors@R: c(
 Maintainer: Dan Kelley <dan.kelley@dal.ca>
 Depends: R (>= 3.0)
 Imports: testthat
-Description: This package is an interface to a website that provides
-    ephemeris data (positions of the moon, sun, etc. in the sky).
+Description: This package is an interface to an
+    Institut de mécanique céleste et de calcul des éphémérides (IMCCE)
+    website that provides information on the positions of the
+    moon, sun, etc. in the sky.
 License: GPL (>= 2)
 Encoding: UTF-8
 LazyData: true
