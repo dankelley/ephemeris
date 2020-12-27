@@ -1,5 +1,8 @@
 # Ephemeris R package
 
+[![R build status](https://github.com/dankelley/epheremis/workflows/R-CMD-check/badge.svg)](https://github.com/dankelley/epheremis/actions)
+
+
 ## Overview
 
 The key function in this package is `ephemeris()`, which downloads and extends
