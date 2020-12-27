@@ -4,7 +4,17 @@
 #' Get ephemeris data
 #'
 #' This function infers ephemeris data by querying a website (reference 1),
-#' and so it requires a web connection to work.
+#' and so it requires a web connection to work. It is aimed at people who
+#' already know the ideas and terminology of ephemeris computations.
+#'
+#' Apart from the parameters of this function, the other specifications for
+#' the query are set up in the same way as is used in the query-generation examples.
+#' For example, the 'observer' is set to `@500`, designating the centre of the earth.
+#' Users who are curious about the query should specify `debug=TRUE` when calling
+#' this function, and they are encouraged to contact the package author, if
+#' they would like any of these hard-wired defaults to be transformed
+#' into a user-adjustable value, via the creation of new parameters
+#' to this function.
 #'
 #' @param name character value of object in question, e.g. `"s:Sun"` for the sun and
 #' `"s:Moon"` for the moon.  Default: `"s:Sun"`.
@@ -23,11 +33,11 @@
 #' @param debug logical value indicating whether to print debugging information. At the moment,
 #' the only information printed is the query string. Default: `FALSE`.
 #'
-#' @return a data frame containing columna named
+#' @return `ephemeris` returns a data frame containing columns named
 #' `"time"`, `"RA"`, `"RAdeg"`, `"DEC"`, `"DECdeg"`, `"Dobs"`, `"VMag"`, `"Phase"`, `"Elong."`,
 #' `"dRAcosDEC"`, `"dDEC"`, and `"RV"`.  All items except those ending in `deg` are as is
 #' returned form the sever.  However, since the angles `"RA"` and `"DEC"` are in a non-numeric
-#' format, `ephemeris` computes degimal forms, stored in `"RAdeg"` and `DECdeg"`.
+#' format, `ephemeris` computes decimal forms, stored in `"RAdeg"` and `DECdeg"`.
 #'
 #' @examples
 #' # Plot daily Right Ascension and Declination values over a 28-day period.
