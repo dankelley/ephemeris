@@ -6,7 +6,7 @@
 
 ## Overview
 
-The key function in this package is `ephemeris()`, which downloads and extends
+The only function in this package is `ephemeris()`, which downloads and extends
 Ephemeris data from a server (reference 1).
 
 ## Installation
