@@ -23,12 +23,5 @@ on 2020-12-25 produced the following.
 
 ![Example 1.](ex1.png)
 
-## Limitations and Bugs
-
-1. The time step must be in integral days. (In theory we can give e.g. `"1 h"`
-   but that seems to fail in my tests.)
-
-# References
-
 1. https://ssp.imcce.fr/webservices/miriade/api/ephemcc/
 
