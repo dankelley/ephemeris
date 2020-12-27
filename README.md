@@ -24,7 +24,7 @@ Running the example
 library(ephemeris)
 example(ephemeris)
 ```
-on 2020-12-25 produced the following.
+on 2020-12-27 produced the following.
 
 ![Example 1.](ex1.png)
 
