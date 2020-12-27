@@ -34,10 +34,12 @@
 #' the only information printed is the query string. Default: `FALSE`.
 #'
 #' @return `ephemeris` returns a data frame containing columns named
-#' `"time"`, `"RA"`, `"RAdeg"`, `"DEC"`, `"DECdeg"`, `"Dobs"`, `"VMag"`, `"Phase"`, `"Elong."`,
-#' `"dRAcosDEC"`, `"dDEC"`, and `"RV"`.  All items except those ending in `deg` are as is
-#' returned form the sever.  However, since the angles `"RA"` and `"DEC"` are in a non-numeric
-#' format, `ephemeris` computes decimal forms, stored in `"RAdeg"` and `DECdeg"`.
+#' `"time"`, `"RA"` (string hour angle), `"RAdec"` (decimal hour angle),
+#' `"DEC"` (string hour angle), `"DECdec"` (decimal hour angle),
+#' `"Dobs"`, `"VMag"`, `"Phase"`, `"Elong."`,
+#' `"dRAcosDEC"`, `"dDEC"`, and `"RV"`.  Note that the numeric values
+#' `RAdec` and `DECdec` are computed from the string values `RA` and `DEC` retrieved
+#' from the server.
 #'
 #' @examples
 #' # Plot daily Right Ascension and Declination values over a 28-day period.
@@ -46,12 +48,12 @@
 #' m <- ephemeris("s:Moon", nbd=28)
 #' par(mfrow=c(2, 1), mar=c(3,3,1,2), mgp=c(2,0.7,0))
 #' RAlim <- range(c(s$RAdeg, m$RAdeg))
-#' plot(s$time, s$RAdeg, type="o", xlab="", ylab="Right Ascension", col=2, ylim=RAlim)
+#' plot(s$time, s$RAdeg, type="o", xlab="", ylab="RA [hour angle]", col=2, ylim=RAlim)
 #' lines(m$time, m$RAdeg, col=4, type="o")
 #' mtext("Red: sun", col=2, adj=0)
 #' mtext("Blue: moon", col=4, adj=1)
 #' DEClim <- range(c(s$DECdeg, m$DECdeg))
-#' plot(s$time, s$DECdeg, type="o", xlab="", ylab="Declination", col=2, ylim=DEClim)
+#' plot(s$time, s$DECdeg, type="o", xlab="", ylab="DEC [hour angle]", col=2, ylim=DEClim)
 #' lines(m$time, m$DECdeg, col=4, type="o")
 #'
 #' @author Dan Kelley

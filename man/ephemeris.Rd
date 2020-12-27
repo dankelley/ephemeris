@@ -34,10 +34,12 @@ the only information printed is the query string. Default: \code{FALSE}.}
 }
 \value{
 \code{ephemeris} returns a data frame containing columns named
-\code{"time"}, \code{"RA"}, \code{"RAdeg"}, \code{"DEC"}, \code{"DECdeg"}, \code{"Dobs"}, \code{"VMag"}, \code{"Phase"}, \code{"Elong."},
-\code{"dRAcosDEC"}, \code{"dDEC"}, and \code{"RV"}.  All items except those ending in \code{deg} are as is
-returned form the sever.  However, since the angles \code{"RA"} and \code{"DEC"} are in a non-numeric
-format, \code{ephemeris} computes decimal forms, stored in \code{"RAdeg"} and \verb{DECdeg"}.
+\code{"time"}, \code{"RA"} (string hour angle), \code{"RAdec"} (decimal hour angle),
+\code{"DEC"} (string hour angle), \code{"DECdec"} (decimal hour angle),
+\code{"Dobs"}, \code{"VMag"}, \code{"Phase"}, \code{"Elong."},
+\code{"dRAcosDEC"}, \code{"dDEC"}, and \code{"RV"}.  Note that the numeric values
+\code{RAdec} and \code{DECdec} are computed from the string values \code{RA} and \code{DEC} retrieved
+from the server.
 }
 \description{
 This function infers ephemeris data by querying a website (reference 1),
@@ -61,12 +63,12 @@ s <- ephemeris(nbd=28)
 m <- ephemeris("s:Moon", nbd=28)
 par(mfrow=c(2, 1), mar=c(3,3,1,2), mgp=c(2,0.7,0))
 RAlim <- range(c(s$RAdeg, m$RAdeg))
-plot(s$time, s$RAdeg, type="o", xlab="", ylab="Right Ascension", col=2, ylim=RAlim)
+plot(s$time, s$RAdeg, type="o", xlab="", ylab="RA [hour angle]", col=2, ylim=RAlim)
 lines(m$time, m$RAdeg, col=4, type="o")
 mtext("Red: sun", col=2, adj=0)
 mtext("Blue: moon", col=4, adj=1)
 DEClim <- range(c(s$DECdeg, m$DECdeg))
-plot(s$time, s$DECdeg, type="o", xlab="", ylab="Declination", col=2, ylim=DEClim)
+plot(s$time, s$DECdeg, type="o", xlab="", ylab="DEC [hour angle]", col=2, ylim=DEClim)
 lines(m$time, m$DECdeg, col=4, type="o")
 
 }
