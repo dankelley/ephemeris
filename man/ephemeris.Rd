@@ -11,44 +11,44 @@ ephemeris(
   t0 = Sys.Date(),
   nbd = 5,
   step = 1,
-  debug = TRUE
+  debug = FALSE
 )
 }
 \arguments{
 \item{name}{character value of object in question, e.g. \code{"s:Sun"} for the sun and
-\code{"s:Moon"} for the moon.  If not supplied, \code{"s:Sun"} is used.}
+\code{"s:Moon"} for the moon.  Default: \code{"s:Sun"}.}
 
-\item{longitude}{decimal value of the longitude (default 0).}
+\item{longitude}{decimal value of the longitude. Default: 0.}
 
-\item{latitude}{decimal value of the latitude (default 0).}
+\item{latitude}{decimal value of the latitude.  Default: 0.}
 
-\item{t0}{POSIXct time for the first retrieval.  The default is the start of the present day.}
+\item{t0}{POSIXct time (UTC) for the first retrieval, or a string from which
+\code{\link[=as.POSIXct]{as.POSIXct()}} can infer such a time. Default: start of present day.}
 
-\item{nbd}{integer value of the number of times to be retrieved. The default is 5.}
+\item{nbd}{integer value of the number of times to be retrieved. Default: 5.}
 
-\item{step}{integer value of the time increment, in days. The default is 1.
-(FIXME: we should be able to use hours also, but I don't ahve that working yet.)}
+\item{step}{numeric value for the time increment, in days.  Default: 1.}
 
 \item{debug}{logical value indicating whether to print debugging information. At the moment,
-the only information printed is the query string.}
+the only information printed is the query string. Default: \code{FALSE}.}
 }
 \value{
 a data frame containing columna named
 \code{"time"}, \code{"RA"}, \code{"RAdeg"}, \code{"DEC"}, \code{"DECdeg"}, \code{"Dobs"}, \code{"VMag"}, \code{"Phase"}, \code{"Elong."},
 \code{"dRAcosDEC"}, \code{"dDEC"}, and \code{"RV"}.  All items except those ending in \code{deg} are as is
 returned form the sever.  However, since the angles \code{"RA"} and \code{"DEC"} are in a non-numeric
-format, \code{epheremis} computes degimal forms, stored in \code{"RAdeg"} and \verb{DECdeg"}.
+format, \code{ephemeris} computes degimal forms, stored in \code{"RAdeg"} and \verb{DECdeg"}.
 }
 \description{
-\code{epherermis} does not do an actual calculation of ephemeris data. Rather, it
-gets such information from a server at
-\url{https://ssp.imcce.fr/webservices/miriade/api/ephemcc/}.
+\code{ephemeris} infers the ephemeris data by querying
+\url{https://ssp.imcce.fr/webservices/miriade/api/ephemcc/}, and so
+a working web connection is required for it to work.
 }
 \examples{
-# Plot Right Ascension and Declination over a 28-day period.
+# Plot daily Right Ascension and Declination values over a 28-day period.
 library(ephemeris)
-s <- ephemeris(nbd=28, step=1)
-m <- ephemeris("s:Moon", nbd=28, step=1)
+s <- ephemeris(nbd=28)
+m <- ephemeris("s:Moon", nbd=28)
 par(mfrow=c(2, 1), mar=c(3,3,1,2), mgp=c(2,0.7,0))
 RAlim <- range(c(s$RAdeg, m$RAdeg))
 plot(s$time, s$RAdeg, type="o", xlab="", ylab="Right Ascension", col=2, ylim=RAlim)

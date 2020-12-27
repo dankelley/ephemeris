@@ -2,12 +2,12 @@
 
 ## Overview
 
-The key function in this package is `epheremis()`, which downloads and extends
+The key function in this package is `ephemeris()`, which downloads and extends
 Ephemeris data from a server (reference 1).
 
 ## Installation
 
-`epheremis` is not on CRAN, but may be installed with
+`ephemeris` is not on CRAN, but may be installed with
 ```R
 remotes::install_github("dankelley/ephemeris")
 ```
@@ -16,8 +16,8 @@ remotes::install_github("dankelley/ephemeris")
 
 Running the example
 ```R
-library(epheremis)
-example(epheremis)
+library(ephemeris)
+example(ephemeris)
 ```
 on 2020-12-25 produced the following.
 
