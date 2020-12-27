@@ -1,6 +1,7 @@
 # Ephemeris R package
 
 [![R build status](https://github.com/dankelley/ephemeris/workflows/R-CMD-check/badge.svg)](https://github.com/dankelley/ephemeris/actions)
+[![codecov](https://codecov.io/gh/dankelley/ephemeris/branch/main/graph/badge.svg)](https://codecov.io/gh/dankelley/ephemeris)
 
 
 ## Overview
