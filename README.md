@@ -7,8 +7,8 @@
 ## Overview
 
 The only function in this package is `ephemeris()`, which downloads and extends
-Ephemeris data from a server (reference 1). This is still in development, and
-user feedback would be appreciated.
+Ephemeris data from a server (Reference 1). Some familiarity with that website
+will be of use to people trying to use this package.
 
 ## Installation
 
@@ -24,9 +24,7 @@ Running the example
 library(ephemeris)
 example(ephemeris)
 ```
-on 2020-12-28 produced the following.
+shows a typical use for the package.
 
-![Example 1.](ex1.png)
-
-1. https://ssp.imcce.fr/webservices/miriade/api/ephemcc/
+1. IMCCE server (https://ssp.imcce.fr/webservices/miriade/api/ephemcc/)
 
