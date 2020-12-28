@@ -111,7 +111,8 @@ ephemeris <- function(name="p:Sun", longitude=0, latitude=0, t0=Sys.Date(), nbd=
     ## Format time as required by the IMCCE website
     if (is.character(t0))
         t0 <- as.POSIXct(t0, tz="UTC")
-    ep <- format(t0, "%Y-%m-%d&nbsp;12h")
+    ##OLD ep <- format(t0, "%Y-%m-%d&nbsp;12h")
+    ep <- format(t0, "%Y-%m-%d&nbsp;%Hh")
     query <- paste0("https://ssp.imcce.fr/webservices/miriade/api/ephemcc.php?",
                     "-name=", name,
                     "&-type=",
@@ -151,7 +152,7 @@ ephemeris <- function(name="p:Sun", longitude=0, latitude=0, t0=Sys.Date(), nbd=
         data$RA <- trimws(data$RA)
     if ("DEC" %in% names(data))
         data$DEC <- trimws(data$DEC)
-    if (tcoor == 1) {
+    if (tcoor == 1 && "RA" %in% names(data)) {
         ## RA and DEC are in '[sign]hour min sec' format.
         data$RAdec <- sapply(data$RA, function(x) {
                              sign <- if (grepl("^\\-", x)) -1 else 1
@@ -168,7 +169,7 @@ ephemeris <- function(name="p:Sun", longitude=0, latitude=0, t0=Sys.Date(), nbd=
     ## data$Date is an integer.  If we really need to figure this out,
     ## it might be worth decoding this, but for now we don't bother.
     if (is.character(data$Date))
-        data$time <- as.POSIXct(data$Date, tz="UTC")
+        data$time <- as.POSIXct(data$Date, format="%Y-%m-%dT%H:%M:%OS", tz="UTC")
     data
 }
 
