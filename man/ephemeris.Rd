@@ -57,7 +57,7 @@ extra checks, and report on progress. Default: \code{FALSE}.}
 \code{ephemeris} returns a data frame with columns that depend
 on the particular call.  The default call has columns named
 \code{Date}, \code{RA}, \code{DEC}, \code{Dobs}, \code{VMag}, \code{dRAcosDEC},
-\code{dDEC}, \code{RV}, \code{RAdec}, \code{DECdec}, which are shortened
+\code{dDEC} and \code{RV}, which are shortened
 versions of the names returned by the query, along with
 three constructed columns, named \code{time}
 (a POSIXt object based on \code{Date}),
@@ -97,7 +97,7 @@ provided in Reference 1.
 For example, the 'observer' is set to \verb{@500}, designating the centre of the earth.
 }
 \examples{
-# Plot daily Right Ascension and Declination values over a 28-day period.
+# Month-long time-series plot of Right Ascension and Declination
 library(ephemeris)
 s <- ephemeris("p:Sun", nbd=28)
 m <- ephemeris("s:Moon", nbd=28)
@@ -117,9 +117,6 @@ lines(m$time, m$DECdec, col=4, type="o")
 \item The \emph{Institut de mécanique céleste et de calcul des éphémérides} website
 \url{https://ssp.imcce.fr/webservices/miriade/api/ephemcc/} is the source of
 data returned by \code{ephemeris}.
-\item The \emph{In The Sky} website used for tests demonstrating 1 arc-second
-consistency for sun RA and DEC, and 15 arc-second consistency for moon:
-\url{https://in-the-sky.org/ephemeris.php}
 }
 }
 \author{

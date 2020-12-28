@@ -72,7 +72,7 @@
 #' @return `ephemeris` returns a data frame with columns that depend
 #' on the particular call.  The default call has columns named
 #' `Date`, `RA`, `DEC`, `Dobs`, `VMag`, `dRAcosDEC`,
-#' `dDEC`, `RV`, `RAdec`, `DECdec`, which are shortened
+#' `dDEC` and `RV`, which are shortened
 #' versions of the names returned by the query, along with
 #' three constructed columns, named `time`
 #' (a POSIXt object based on `Date`),
@@ -80,7 +80,7 @@
 #' `DEC`).  Other calls have different results.
 #'
 #' @examples
-#' # Plot daily Right Ascension and Declination values over a 28-day period.
+#' # Month-long time-series plot of Right Ascension and Declination
 #' library(ephemeris)
 #' s <- ephemeris("p:Sun", nbd=28)
 #' m <- ephemeris("s:Moon", nbd=28)
@@ -101,9 +101,9 @@
 #' \url{https://ssp.imcce.fr/webservices/miriade/api/ephemcc/} is the source of
 #' data returned by `ephemeris`.
 #'
-#' 2. The *In The Sky* website used for tests demonstrating 1 arc-second
-#' consistency for sun RA and DEC, and 15 arc-second consistency for moon:
-#' \url{https://in-the-sky.org/ephemeris.php}
+## 2. The *In The Sky* website used for tests demonstrating 1 arc-second
+## consistency for sun RA and DEC, and 15 arc-second consistency for moon:
+## \url{https://in-the-sky.org/ephemeris.php}
 #'
 #' @importFrom utils read.csv tail
 #' @export
