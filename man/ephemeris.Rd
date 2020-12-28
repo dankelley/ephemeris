@@ -58,8 +58,8 @@ extra checks, and report on progress. Default: \code{FALSE}.}
 on the particular call.  The default call has columns named
 \code{Date}, \code{RA}, \code{DEC}, \code{Dobs}, \code{VMag}, \code{dRAcosDEC},
 \code{dDEC}, \code{RV}, \code{RAdec}, \code{DECdec}, which are shortened
-versions of the names returned by the query, along with a computed
-columns named \code{time} (which is \code{Date} as a POSIXct time object),
+versions of the names returned by the query, along with
+extra olumns named \code{time} (which is \code{Date} as a POSIXct time object),
 \code{RAdec} (decimal version of \code{RA}) and \code{DECdec} (decimal version of
 \code{DEC}).  Other calls will have different results.
 }
