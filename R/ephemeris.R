@@ -133,27 +133,25 @@ ephemeris <- function(name="p:Sun", longitude=0, latitude=0, t0=Sys.Date(), nbd=
     if (debug)
         cat("col.names: \"", paste(col.names, collapse="\", \""), "\"\n", sep="")
     data <- read.csv(text=eph, skip=headerEnd+1, header=FALSE, col.names=col.names)
-    ## RA and DEC are in '[sign]hour min sec' format.
-    ## FIXME(dek 2020-12-27): I think RAdec and DECdec are incorrect.
-    if (tcoor == 1) {
-        data$RAdec <- sapply(data$RA, function(x) {
-                             x <- trimws(x)
-                             sign <- if (grepl("^\\-", x)) -1 else 1
-                             s <- strsplit(x, " ")[[1]]
-                             as.numeric(s[1]) + sign * (as.numeric(s[2])/60 + as.numeric(s[3])/3600)
-                    })
-        data$DECdec <- sapply(data$DEC, function(x) {
-                              x <- trimws(x)
-                              sign <- if (grepl("^\\-", x)) -1 else 1
-                              s <- strsplit(x, " ")[[1]]
-                              as.numeric(s[1]) + sign * (as.numeric(s[2])/60 + as.numeric(s[3])/3600)
-                    })
-    }
     ## Remove annoying initial whitespace
     if ("RA" %in% names(data))
         data$RA <- trimws(data$RA)
     if ("DEC" %in% names(data))
         data$DEC <- trimws(data$DEC)
+    if (tcoor == 1) {
+        ## RA and DEC are in '[sign]hour min sec' format.
+        data$RAdec <- sapply(data$RA, function(x) {
+                             sign <- if (grepl("^\\-", x)) -1 else 1
+                             s <- strsplit(x, " ")[[1]]
+                             as.numeric(s[1]) + sign * (as.numeric(s[2])/60 + as.numeric(s[3])/3600)
+                    })
+        data$DECdec <- sapply(data$DEC, function(x) {
+                              sign <- if (grepl("^\\-", x)) -1 else 1
+                              s <- strsplit(x, " ")[[1]]
+                              as.numeric(s[1]) + sign * (as.numeric(s[2])/60 + as.numeric(s[3])/3600)
+                    })
+    }
+    ## Add a POSIX time field
     data$time <- as.POSIXct(data$Date, format="%Y-%m-%dT%H:%M:%S", tz="UTC")
     data
 }
