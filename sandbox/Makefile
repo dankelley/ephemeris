@@ -13,6 +13,9 @@ test4: force
 	curl "https://ssp.imcce.fr/webservices/miriade/api/ephemcc.php?-name=s:Moon&-type=&-ep='2020-01-01&nbsp;12h'&-nbd=5&-step=1d&-tscale=UTC&-observer=@500&-theory=INPOP&-teph=1&-tcoor=1&-oscelem=astorb&-mime=text&-from=MiriadeDoc" > test4.txt
 
 test5: force
-	curl "https://ssp.imcce.fr/webservices/miriade/api/ephemcc.php?-name=s:Moon&-type=&-ep='2020-01-01&nbsp;12h'&-nbd=5&-step=1.5d&-tscale=UTC&-observer=@500&-theory=INPOP&-teph=1&-tcoor=1&-oscelem=astorb&-mime=text&-from=MiriadeDoc" > test5.txt
+	curl "https://ssp.imcce.fr/webservices/miriade/api/ephemcc.php?-name=s:Sun&-type=&-ep='2020-01-01&nbsp;12h'&-nbd=5&-step=1.5d&-tscale=UTC&-observer=@500&-theory=INPOP&-teph=1&-tcoor=1&-oscelem=astorb&-mime=text&-from=MiriadeDoc" > test5.txt
+
+test6: force
+	curl "https://ssp.imcce.fr/webservices/miriade/api/ephemcc.php?-name=p:Sun&-type=&-ep='2020-01-01&nbsp;12h'&-nbd=5&-step=1.5d&-tscale=UTC&-observer=@500&-theory=INPOP&-teph=1&-tcoor=1&-oscelem=astorb&-mime=text&-from=MiriadeDoc" > test6.txt
 
 force:
