@@ -91,7 +91,7 @@
 #' consistency for sun RA and DEC, and 15 arc-second consistency for moon:
 #' \url{https://in-the-sky.org/ephemeris.php}
 #'
-#' @importFrom utils read.csv
+#' @importFrom utils read.csv tail
 #' @export
 ephemeris <- function(name="p:Sun", longitude=0, latitude=0, t0=Sys.Date(), nbd=5, step=1,
                      theory="INPOP", teph=1, tcoor=1, rplane=1, debug=FALSE)
@@ -119,6 +119,13 @@ ephemeris <- function(name="p:Sun", longitude=0, latitude=0, t0=Sys.Date(), nbd=
     if (debug)
         cat(query, "\n")
     eph <- readLines(query)
+    object <- tail(strsplit(trimws(strsplit(eph[3],"\\|")[[1]][1]), " ")[[1]],1)
+    queryNames <- strsplit(eph[1 + tail(grep("^#", eph),1)], ", ")[[1]]
+    if (debug) {
+        cat("Object: ", object, "\n", sep="")
+        cat("QueryNames: \"", paste(queryNames, collapse="\", \""), "\"\n", sep="")
+    }
+
     col.names <- c("time", "RA", "DEC", "Dobs", "VMag", "Phase", "Elong.", "dRAcosDEC", "dDEC", "RV")
     data <- read.csv(text=eph, skip=4, header=FALSE, col.names=col.names)
     ## RA and DEC are in '[sign]hour min sec' format.

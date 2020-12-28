@@ -2,3 +2,4 @@
 
 export(ephemeris)
 importFrom(utils,read.csv)
+importFrom(utils,tail)
