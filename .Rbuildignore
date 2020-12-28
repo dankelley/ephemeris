@@ -4,3 +4,6 @@ tests/testthat/_snaps
 ex1.png
 ^.*\.Rproj$
 ^\.Rproj\.user$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
