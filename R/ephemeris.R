@@ -99,6 +99,9 @@ ephemeris <- function(name="p:Sun", longitude=0, latitude=0, t0=Sys.Date(), nbd=
     if (is.character(t0))
         t0 <- as.POSIXct(t0, tz="UTC")
     t0string <- format(t0, "%Y-%m-%d&nbsp;12h")
+    tcoor <- as.integer(tcoor)
+    if (!tcoor %in% 1:5)
+        stop("tcoor must be 1, 2, 3, 4 or 5")
     query <- paste0("https://ssp.imcce.fr/webservices/miriade/api/ephemcc.php?",
                     "-name=", name,
                     "&-type=",
@@ -151,8 +154,11 @@ ephemeris <- function(name="p:Sun", longitude=0, latitude=0, t0=Sys.Date(), nbd=
                               as.numeric(s[1]) + sign * (as.numeric(s[2])/60 + as.numeric(s[3])/3600)
                     })
     }
-    ## Add a POSIX time field
-    data$time <- as.POSIXct(data$Date, format="%Y-%m-%dT%H:%M:%S", tz="UTC")
+    ## Add a POSIX time field, if we can.  Note that for tcoor=2,
+    ## data$Date is an integer.  If we really need to figure this out,
+    ## it might be worth decoding this, but for now we don't bother.
+    if (is.character(data$Date))
+        data$time <- as.POSIXct(data$Date, tz="UTC")
     data
 }
 
