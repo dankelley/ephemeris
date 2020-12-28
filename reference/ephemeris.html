@@ -42,9 +42,7 @@
 <meta property="og:title" content="Get ephemeris data — ephemeris" />
 <meta property="og:description" content="This function infers ephemeris data by querying a website (reference 1),
 and so it requires a web connection to work. It is aimed at people who
-already know the ideas and terminology of ephemeris computations. Tests
-against the In the Sky website suggest RA and DEC accuracy to within
-1 arc-second for the sun, and 15 arc-seconds for the moon." />
+already know the ideas and terminology of ephemeris computations." />
 
 
 
@@ -115,9 +113,7 @@ against the In the Sky website suggest RA and DEC accuracy to within
     <div class="ref-description">
     <p>This function infers ephemeris data by querying a website (reference 1),
 and so it requires a web connection to work. It is aimed at people who
-already know the ideas and terminology of ephemeris computations. Tests
-against the <em>In the Sky</em> website suggest RA and DEC accuracy to within
-1 arc-second for the sun, and 15 arc-seconds for the moon.</p>
+already know the ideas and terminology of ephemeris computations.</p>
     </div>
 
     <pre class="usage"><span class='fu'>ephemeris</span><span class='op'>(</span>
@@ -190,8 +186,8 @@ for equator and 2 for ecliptic. Default: 1.</p></td>
     </tr>
     <tr>
       <th>debug</th>
-      <td><p>logical value indicating whether to print debugging information. At the moment,
-the only information printed is the query string. Default: <code>FALSE</code>.</p></td>
+      <td><p>logical value indicating whether to perform some
+extra checks, and report on progress. Default: <code>FALSE</code>.</p></td>
     </tr>
     </table>
 
@@ -206,8 +202,10 @@ decimal values of <code>RA</code> and <code>DEC</code> are computed if <code>tco
 these may be incorrect.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>The names of parameters, and their explanaations, are patterned on Reference 1.
-In particular, the moon is <code>"s:Moon"</code> and the sun is (oddly) <code>"p:Sun"</code>.</p>
+    <p>The names of parameters, and their explanations, are patterned
+on Reference 1. It is not easy to guess these things.  For example,
+the moon is <code>"s:Moon"</code> (where the <code>s</code> indicates a satellite)
+a planet).</p>
 <p>Apart from the listed parameters of this function, the other specifications for
 the query are set up in the same way as is used in the query-generation examples
 provided in Reference 1.
@@ -217,6 +215,14 @@ this function, and they are encouraged to contact the package author, if
 they would like any of these hard-wired defaults to be transformed
 into a user-adjustable value, via the creation of new parameters
 to this function.</p>
+<p>The names of parameters, and their explanations, are patterned
+on Reference 1. It is not easy to guess these things.  For example,
+the moon is <code>"s:Moon"</code> (where the <code>s</code> indicates a satellite)
+a planet).</p>
+<p>Apart from the listed parameters of this function, the other specifications for
+the query are set up in the same way as is used in the query-generation examples
+provided in Reference 1.
+For example, the 'observer' is set to <code>@500</code>, designating the centre of the earth.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     
