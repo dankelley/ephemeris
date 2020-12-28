@@ -96,16 +96,26 @@
 ephemeris <- function(name="p:Sun", longitude=0, latitude=0, t0=Sys.Date(), nbd=5, step=1,
                      theory="INPOP", teph=1, tcoor=1, rplane=1, debug=FALSE)
 {
-    if (is.character(t0))
-        t0 <- as.POSIXct(t0, tz="UTC")
-    t0string <- format(t0, "%Y-%m-%d&nbsp;12h")
+    ## Check argument validity
+    if (!theory %in% c("INPOP", "DE200", "BDL82", "SLP98", "DE403", "DE405", "DE406", "DE430", "DE431"))
+        stop("theory must be \"INPOP\", \"DE200\", \"BDL82\", \"SLP98\", \"DE403\", \"DE405\", \"DE406\", \"DE430\", or \"DE431\"")
+    teph <- as.integer(teph)
+    if (!teph %in% 1:4)
+        stop("teph must be 1, 2, 3 or 4")
     tcoor <- as.integer(tcoor)
     if (!tcoor %in% 1:5)
         stop("tcoor must be 1, 2, 3, 4 or 5")
+    rplane <- as.integer(rplane)
+    if (!rplane %in% 1:2)
+        stop("rplane must be 1 or 2")
+    ## Format time as required by the IMCCE website
+    if (is.character(t0))
+        t0 <- as.POSIXct(t0, tz="UTC")
+    ep <- format(t0, "%Y-%m-%d&nbsp;12h")
     query <- paste0("https://ssp.imcce.fr/webservices/miriade/api/ephemcc.php?",
                     "-name=", name,
                     "&-type=",
-                    "&-ep=\"", t0string, "\"", # BUG: ignored
+                    "&-ep=\"", ep, "\"",
                     "&-long=", -longitude, # convention: negative to East
                     "&-lat=", latitude,
                     "&-nbd=", nbd,
