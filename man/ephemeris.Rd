@@ -54,13 +54,14 @@ for equator and 2 for ecliptic. Default: 1.}
 extra checks, and report on progress. Default: \code{FALSE}.}
 }
 \value{
-\code{ephemeris} returns a data frame containing columns named
-\code{"time"}, \code{"RA"}, \code{"RAdec"} (decimal hour angle),
-\code{"DEC"} (string hour angle), \code{"DECdec"} (decimal hour angle),
-\code{"Dobs"}, \code{"VMag"}, \code{"Phase"}, \code{"Elong."},
-\code{"dRAcosDEC"}, \code{"dDEC"}, and \code{"RV"}.  In addition, \emph{PROVISIONALLY}
-decimal values of \code{RA} and \code{DEC} are computed if \code{tcoor=1}, but
-these may be incorrect.
+\code{ephemeris} returns a data frame with columns that depend
+on the particular call.  The default call has columns named
+\code{Date}, \code{RA}, \code{DEC}, \code{Dobs}, \code{VMag}, \code{dRAcosDEC},
+\code{dDEC}, \code{RV}, \code{RAdec}, \code{DECdec}, which are shortened
+versions of the names returned by the query, along with a computed
+columns named \code{time} (which is \code{Date} as a POSIXct time object),
+\code{RAdec} (decimal version of \code{RA}) and \code{DECdec} (decimal version of
+\code{DEC}).  Other calls will have different results.
 }
 \description{
 This function infers ephemeris data by querying a website (reference 1),

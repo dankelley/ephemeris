@@ -69,13 +69,14 @@
 #' @param debug logical value indicating whether to perform some
 #' extra checks, and report on progress. Default: `FALSE`.
 #'
-#' @return `ephemeris` returns a data frame containing columns named
-#' `"time"`, `"RA"`, `"RAdec"` (decimal hour angle),
-#' `"DEC"` (string hour angle), `"DECdec"` (decimal hour angle),
-#' `"Dobs"`, `"VMag"`, `"Phase"`, `"Elong."`,
-#' `"dRAcosDEC"`, `"dDEC"`, and `"RV"`.  In addition, *PROVISIONALLY*
-#' decimal values of `RA` and `DEC` are computed if `tcoor=1`, but
-#' these may be incorrect.
+#' @return `ephemeris` returns a data frame with columns that depend
+#' on the particular call.  The default call has columns named
+#' `Date`, `RA`, `DEC`, `Dobs`, `VMag`, `dRAcosDEC`,
+#' `dDEC`, `RV`, `RAdec`, `DECdec`, which are shortened
+#' versions of the names returned by the query, along with a computed
+#' columns named `time` (which is `Date` as a POSIXct time object),
+#' `RAdec` (decimal version of `RA`) and `DECdec` (decimal version of
+#' `DEC`).  Other calls will have different results.
 #'
 #' @examples
 #' # Plot daily Right Ascension and Declination values over a 28-day period.
