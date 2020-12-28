@@ -50,8 +50,8 @@ for spherical, 2 for rectangular, 3 for local, 4 for hour angle, and
 \item{rplane}{integer value for the reference plane, with 1
 for equator and 2 for ecliptic. Default: 1.}
 
-\item{debug}{logical value indicating whether to print debugging information. At the moment,
-the only information printed is the query string. Default: \code{FALSE}.}
+\item{debug}{logical value indicating whether to perform some
+extra checks, and report on progress. Default: \code{FALSE}.}
 }
 \value{
 \code{ephemeris} returns a data frame containing columns named
@@ -65,13 +65,13 @@ these may be incorrect.
 \description{
 This function infers ephemeris data by querying a website (reference 1),
 and so it requires a web connection to work. It is aimed at people who
-already know the ideas and terminology of ephemeris computations. Tests
-against the \emph{In the Sky} website suggest RA and DEC accuracy to within
-1 arc-second for the sun, and 15 arc-seconds for the moon.
+already know the ideas and terminology of ephemeris computations.
 }
 \details{
-The names of parameters, and their explanaations, are patterned on Reference 1.
-In particular, the moon is \code{"s:Moon"} and the sun is (oddly) \code{"p:Sun"}.
+The names of parameters, and their explanations, are patterned
+on Reference 1. It is not easy to guess these things.  For example,
+the moon is \code{"s:Moon"} (where the \code{s} indicates a satellite)
+a planet).
 
 Apart from the listed parameters of this function, the other specifications for
 the query are set up in the same way as is used in the query-generation examples
@@ -83,6 +83,16 @@ this function, and they are encouraged to contact the package author, if
 they would like any of these hard-wired defaults to be transformed
 into a user-adjustable value, via the creation of new parameters
 to this function.
+
+The names of parameters, and their explanations, are patterned
+on Reference 1. It is not easy to guess these things.  For example,
+the moon is \code{"s:Moon"} (where the \code{s} indicates a satellite)
+a planet).
+
+Apart from the listed parameters of this function, the other specifications for
+the query are set up in the same way as is used in the query-generation examples
+provided in Reference 1.
+For example, the 'observer' is set to \verb{@500}, designating the centre of the earth.
 }
 \examples{
 # Plot daily Right Ascension and Declination values over a 28-day period.
