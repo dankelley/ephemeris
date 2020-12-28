@@ -65,13 +65,19 @@ these may be incorrect.
 \description{
 This function infers ephemeris data by querying a website (reference 1),
 and so it requires a web connection to work. It is aimed at people who
-already know the ideas and terminology of ephemeris computations.
+already know the ideas and terminology of ephemeris computations. Tests
+against the \emph{In the Sky} website suggest RA and DEC accuracy to within
+1 arc-second for the sun, and 15 arc-seconds for the moon.
 }
 \details{
 The names of parameters, and their explanaations, are patterned on Reference 1.
-Apart from those parameters of this function, the other specifications for
-the query are set up in the same way as is used in the query-generation examples.
+In particular, the moon is \code{"s:Moon"} and the sun is (oddly) \code{"p:Sun"}.
+
+Apart from the listed parameters of this function, the other specifications for
+the query are set up in the same way as is used in the query-generation examples
+provided in Reference 1.
 For example, the 'observer' is set to \verb{@500}, designating the centre of the earth.
+
 Users who are curious about the query should specify \code{debug=TRUE} when calling
 this function, and they are encouraged to contact the package author, if
 they would like any of these hard-wired defaults to be transformed
@@ -99,6 +105,9 @@ lines(m$time, m$DECdec, col=4, type="o")
 \item The \emph{Institut de mécanique céleste et de calcul des éphémérides} website
 \url{https://ssp.imcce.fr/webservices/miriade/api/ephemcc/} is the source of
 data returned by \code{ephemeris}.
+\item The \emph{In The Sky} website used for tests demonstrating 1 arc-second
+consistency for sun RA and DEC, and 15 arc-second consistency for moon:
+\url{https://in-the-sky.org/ephemeris.php}
 }
 }
 \author{

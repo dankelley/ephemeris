@@ -1,3 +1,4 @@
+^.github$
 sandbox
 tests/testthat/_snaps
 ex1.png

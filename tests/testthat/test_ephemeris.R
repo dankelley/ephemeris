@@ -3,34 +3,33 @@ library(ephemeris)
 
 context("ephemeris")
 
-##>>> test_that("results remain consistent",
-##>>>           {
-##>>>             d <- expect_silent(ephemeris(t0="2020-01-01"))
-##>>>             expect_equal(d, structure(list(time=structure(c(1577836800, 1577923200, 1578009600,
-##>>>                                                             1578096000, 1578182400),
-##>>>                                                           class=c("POSIXct", "POSIXt"), tzone="UTC"),
-##>>>                                            RA=c(" +18 18 06.32143", " +18 25 03.32428", " +18 32 01.75654",
-##>>>                                                 " +18 39 01.51678", " +18 46 02.50139"),
-##>>>                                            DEC=c(" -24 38 41.7913", " -24 40 17.1715", " -24 40 30.0639",
-##>>>                                                  " -24 39 19.3861", " -24 36 44.0957"),
-##>>>                                            Dobs=c(1.433992355, 1.436027947, 1.437513829,
-##>>>                                                   1.438448215, 1.438828176),
-##>>>                                            VMag=c(-0.93, -0.98, -1.02,
-##>>>                                                   -1.07, -1.12),
-##>>>                                            Phase=c(12.24, 11.13, 10.05,
-##>>>                                                    8.98, 7.93),
-##>>>                                            Elong.=c(5.77, 5.25, 4.73,
-##>>>                                                     4.22, 3.72),
-##>>>                                            dRAcosDEC=c(3.941, 3.954, 3.967,
-##>>>                                                        3.98, 3.992),
-##>>>                                            dDEC=c(-0.09462, -0.03772, 0.01994,
-##>>>                                                   0.07834, 0.1375),
-##>>>                                            RV=c(3.99999, 3.04905, 2.096,
-##>>>                                                 1.13889, 0.17571),
-##>>>                                            RAdec=c(18.3017559527778, 18.4175900777778, 18.5338212611111,
-##>>>                                                    18.6504213277778, 18.7673614972222),
-##>>>                                            DECdec=c(-24.6449420277778, -24.6714365277778, -24.67501775,
-##>>>                                                     -24.6553850277778, -24.6122488055556)),
-##>>>                                       row.names=c(NA, -5L), class="data.frame"))
-##>>>           })
-##>>> 
+C <- function(a, b, c)
+  a + b/60 + c/3600
+
+test_that("sun ephemeris vs in-the-sky.org on 2020-01-04",
+          {
+            ## Reference: the site
+            ## https://in-the-sky.org/ephemeris.php?ird=1&objtype=1&objpl=Sun&objtxt=the+Sun&tz=1&startday=3&startmonth=1&startyear=2020&interval=1&rows=25
+            ## RA:   18h55m37s
+            ## DEC: -22°49'16"
+            E <- ephemeris::ephemeris(name="p:Sun", t0="2020-01-04", nbd=1)
+            expect_equal(E$RA,  "+18 55 37.55648") # self-consistency check
+            expect_equal(E$DEC, "-22 49 16.2886") # self-consistency check
+            expect_equal(E$RAdec,   C(18,55,37), tolerance=1/3600, scale=1)
+            expect_equal(E$DECdec, -C(22,49,16), tolerance=1/3600, scale=1)
+          }
+)
+
+test_that("moon ephemeris vs in-the-sky.org on 2020-01-04",
+          {
+            ## Reference: For 2002-01-04
+            ## https://in-the-sky.org/ephemeris.php?ird=1&objtype=1&objpl=Moon&objtxt=the+Moon&tz=1&startday=3&startmonth=1&startyear=2020&interval=1&rows=25
+            ## RA:   01h27m21s
+            ## DEC: +03°37'39"
+            E <- ephemeris::ephemeris(name="s:Moon", t0="2020-01-04", nbd=1)
+            expect_equal(E$RA,  "+01 27 23.68685") # consistency check
+            expect_equal(E$DEC, "+03 37 53.5896") # consistency check
+            expect_equal(E$RAdec,  C(01,27,21), tolerance=3/3600, scale=1)
+            expect_equal(E$DECdec, C(03,37,39), tolerance=15/3600, scale=1)
+          }
+)
