@@ -193,13 +193,14 @@ extra checks, and report on progress. Default: <code>FALSE</code>.</p></td>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>ephemeris</code> returns a data frame containing columns named
-<code>"time"</code>, <code>"RA"</code>, <code>"RAdec"</code> (decimal hour angle),
-<code>"DEC"</code> (string hour angle), <code>"DECdec"</code> (decimal hour angle),
-<code>"Dobs"</code>, <code>"VMag"</code>, <code>"Phase"</code>, <code>"Elong."</code>,
-<code>"dRAcosDEC"</code>, <code>"dDEC"</code>, and <code>"RV"</code>.  In addition, <em>PROVISIONALLY</em>
-decimal values of <code>RA</code> and <code>DEC</code> are computed if <code>tcoor=1</code>, but
-these may be incorrect.</p>
+    <p><code>ephemeris</code> returns a data frame with columns that depend
+on the particular call.  The default call has columns named
+<code>Date</code>, <code>RA</code>, <code>DEC</code>, <code>Dobs</code>, <code>VMag</code>, <code>dRAcosDEC</code>,
+<code>dDEC</code>, <code>RV</code>, <code>RAdec</code>, <code>DECdec</code>, which are shortened
+versions of the names returned by the query, along with a computed
+columns named <code>time</code> (which is <code>Date</code> as a POSIXct time object),
+<code>RAdec</code> (decimal version of <code>RA</code>) and <code>DECdec</code> (decimal version of
+<code>DEC</code>).  Other calls will have different results.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>The names of parameters, and their explanations, are patterned
