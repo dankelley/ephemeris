@@ -74,9 +74,10 @@
 #' `Date`, `RA`, `DEC`, `Dobs`, `VMag`, `dRAcosDEC`,
 #' `dDEC`, `RV`, `RAdec`, `DECdec`, which are shortened
 #' versions of the names returned by the query, along with
-#' extra olumns named `time` (which is `Date` as a POSIXct time object),
-#' `RAdec` (decimal version of `RA`) and `DECdec` (decimal version of
-#' `DEC`).  Other calls will have different results.
+#' three constructed columns, named `time`
+#' (a POSIXt object based on `Date`),
+#' `RAdec` (a decimal version of `RA`) and `DECdec` (a decimal version of
+#' `DEC`).  Other calls have different results.
 #'
 #' @examples
 #' # Plot daily Right Ascension and Declination values over a 28-day period.
