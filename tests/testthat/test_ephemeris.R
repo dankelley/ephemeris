@@ -33,3 +33,19 @@ test_that("moon ephemeris vs in-the-sky.org on 2020-01-04",
             expect_equal(E$DECdec, C(03,37,39), tolerance=15/3600, scale=1)
           }
 )
+
+test_that("error messages",
+          {
+            expect_error(ephemeris(theory="junk"), "theory must be")
+            expect_error(ephemeris(teph=5), "teph must be")
+            expect_error(ephemeris(tcoor=6), "tcoor must be")
+            expect_error(ephemeris(rplane=3), "rplane must be")
+          }
+)
+
+test_that("debug messages",
+          {
+            expect_output(ephemeris(debug=TRUE), "https://")
+          }
+)
+
