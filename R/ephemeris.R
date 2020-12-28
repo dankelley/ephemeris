@@ -119,15 +119,20 @@ ephemeris <- function(name="p:Sun", longitude=0, latitude=0, t0=Sys.Date(), nbd=
     if (debug)
         cat(query, "\n")
     eph <- readLines(query)
-    object <- tail(strsplit(trimws(strsplit(eph[3],"\\|")[[1]][1]), " ")[[1]],1)
+    headerEnd <- tail(grep("^#", eph), 1)
+    if (debug)
+        cat("headerEnd: ", headerEnd, "\n")
+    object <- tail(strsplit(trimws(strsplit(eph[headerEnd],"\\|")[[1]][1]), " ")[[1]],1)
     queryNames <- strsplit(eph[1 + tail(grep("^#", eph),1)], ", ")[[1]]
     if (debug) {
         cat("Object: ", object, "\n", sep="")
         cat("QueryNames: \"", paste(queryNames, collapse="\", \""), "\"\n", sep="")
     }
-
-    col.names <- c("time", "RA", "DEC", "Dobs", "VMag", "Phase", "Elong.", "dRAcosDEC", "dDEC", "RV")
-    data <- read.csv(text=eph, skip=4, header=FALSE, col.names=col.names)
+    ##OLD col.names <- c("time", "RA", "DEC", "Dobs", "VMag", "Phase", "Elong.", "dRAcosDEC", "dDEC", "RV")
+    col.names <- gsub("[ ]+(.*)$","", queryNames)
+    if (debug)
+        cat("col.names: \"", paste(col.names, collapse="\", \""), "\"\n", sep="")
+    data <- read.csv(text=eph, skip=headerEnd+1, header=FALSE, col.names=col.names)
     ## RA and DEC are in '[sign]hour min sec' format.
     ## FIXME(dek 2020-12-27): I think RAdec and DECdec are incorrect.
     if (tcoor == 1) {
@@ -145,9 +150,11 @@ ephemeris <- function(name="p:Sun", longitude=0, latitude=0, t0=Sys.Date(), nbd=
                     })
     }
     ## Remove annoying initial whitespace
-    data$RA <- trimws(data$RA)
-    data$DEC <- trimws(data$DEC)
-    data$time <- as.POSIXct(data$time, format="%Y-%m-%dT%H:%M:%S", tz="UTC")
+    if ("RA" %in% names(data))
+        data$RA <- trimws(data$RA)
+    if ("DEC" %in% names(data))
+        data$DEC <- trimws(data$DEC)
+    data$time <- as.POSIXct(data$Date, format="%Y-%m-%dT%H:%M:%S", tz="UTC")
     data
 }
 
