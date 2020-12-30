@@ -152,8 +152,10 @@ ephemeris <- function(name="p:Sun", longitude=0, latitude=0, t0=Sys.Date(), nbd=
                     "&-mime=text/csv",
                     "&-from=R/ephemeris")
     if (debug)
-        cat(query, "\n")
+        cat("QUERY:\n", query, "\n\n", sep="")
     eph <- readLines(query)
+    if (debug)
+        cat("RESPONSE:\n", paste(eph, collapse="\n"), "\n\n", sep="")
     headerEnd <- tail(grep("^#", eph), 1)
     if (debug)
         cat("headerEnd: ", headerEnd, "\n")
