@@ -123,6 +123,7 @@ already know the ideas and terminology of ephemeris computations.</p>
   t0 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.Date</a></span><span class='op'>(</span><span class='op'>)</span>,
   nbd <span class='op'>=</span> <span class='fl'>5</span>,
   step <span class='op'>=</span> <span class='fl'>1</span>,
+  observer <span class='op'>=</span> <span class='st'>"@500"</span>,
   theory <span class='op'>=</span> <span class='st'>"INPOP"</span>,
   teph <span class='op'>=</span> <span class='fl'>1</span>,
   tcoor <span class='op'>=</span> <span class='fl'>1</span>,
@@ -160,6 +161,12 @@ In Reference 1, this is called <code>ep</code> and referred to as the requested 
     <tr>
       <th>step</th>
       <td><p>numeric value for the time increment, in days.  Default: 1.</p></td>
+    </tr>
+    <tr>
+      <th>observer</th>
+      <td><p>character value indicating the location of the observer.  There
+are many choices for this value.  The default value, <code>"@500"</code>, refers to the
+centre of the earth.</p></td>
     </tr>
     <tr>
       <th>theory</th>
@@ -210,8 +217,7 @@ the moon is <code>"s:Moon"</code> (where the <code>s</code> indicates a satellit
 a planet).</p>
 <p>Apart from the listed parameters of this function, the other specifications for
 the query are set up in the same way as is used in the query-generation examples
-provided in Reference 1.
-For example, the 'observer' is set to <code>@500</code>, designating the centre of the earth.</p>
+provided in Reference 1.</p>
 <p>Users who are curious about the query should specify <code>debug=TRUE</code> when calling
 this function, and they are encouraged to contact the package author, if
 they would like any of these hard-wired defaults to be transformed
@@ -223,8 +229,7 @@ the moon is <code>"s:Moon"</code> (where the <code>s</code> indicates a satellit
 a planet).</p>
 <p>Apart from the listed parameters of this function, the other specifications for
 the query are set up in the same way as is used in the query-generation examples
-provided in Reference 1.
-For example, the 'observer' is set to <code>@500</code>, designating the centre of the earth.</p>
+provided in Reference 1.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     
