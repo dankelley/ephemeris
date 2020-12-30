@@ -33,24 +33,29 @@
 #' the query are set up in the same way as is used in the query-generation examples
 #' provided in Reference 1.
 #'
-#' @param name character value of object in question. There are many objects
-#' that can be checked, e.g. `"p:Sun"` for the sun and
-#' `"s:Moon"` for the moon.  Default: `"p:Sun"`.
+#' @param name character value of the object of interest.
+#' For an explanation of the possible choices, see
+#' <https://ssp.imcce.fr/webservices/miriade/howto/ephemcc/#howto-sso>.
+#' The sun is indicated with `"p:Sun"`, and the moon with `"s:Moon"`.
+#' Default: `"p:Sun"`.
 #'
 #' @param longitude decimal value of the longitude. Default: 0.
 #'
 #' @param latitude decimal value of the latitude.  Default: 0.
 #'
 #' @param t0 POSIXct time (UTC) for the first retrieval, or a string from which
-#' [as.POSIXct()] can infer such a time. Default: start of present day.
-#' In Reference 1, this is called `ep` and referred to as the requested epoch.
+#' [as.POSIXct()] can infer such a time.
+#' In Reference 1, this value is denoted `ep` and referred to as the epoch.
+#' Default: start of present day.
 #'
 #' @param nbd integer value of the number of times to be retrieved. Default: 5.
 #'
 #' @param step numeric value for the time increment, in days.  Default: 1.
 #'
-#' @param observer character value indicating the location of the observer.  There
-#' are many choices for this value.  The default value, `"@500"`, refers to the
+#' @param observer character value indicating the location of the observer.  See
+#' <https://ssp.imcce.fr/webservices/miriade/howto/ephemcc/#howto-observer>
+#' for an explanation of this quantity.
+#' The default value, `"@500"`, refers to the
 #' centre of the earth.
 #'
 #' @param theory character value indicating the planetary theory, with choices

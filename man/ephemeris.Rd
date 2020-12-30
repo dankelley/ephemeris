@@ -20,24 +20,29 @@ ephemeris(
 )
 }
 \arguments{
-\item{name}{character value of object in question. There are many objects
-that can be checked, e.g. \code{"p:Sun"} for the sun and
-\code{"s:Moon"} for the moon.  Default: \code{"p:Sun"}.}
+\item{name}{character value of the object of interest.
+For an explanation of the possible choices, see
+\url{https://ssp.imcce.fr/webservices/miriade/howto/ephemcc/#howto-sso}.
+The sun is indicated with \code{"p:Sun"}, and the moon with \code{"s:Moon"}.
+Default: \code{"p:Sun"}.}
 
 \item{longitude}{decimal value of the longitude. Default: 0.}
 
 \item{latitude}{decimal value of the latitude.  Default: 0.}
 
 \item{t0}{POSIXct time (UTC) for the first retrieval, or a string from which
-\code{\link[=as.POSIXct]{as.POSIXct()}} can infer such a time. Default: start of present day.
-In Reference 1, this is called \code{ep} and referred to as the requested epoch.}
+\code{\link[=as.POSIXct]{as.POSIXct()}} can infer such a time.
+In Reference 1, this value is denoted \code{ep} and referred to as the epoch.
+Default: start of present day.}
 
 \item{nbd}{integer value of the number of times to be retrieved. Default: 5.}
 
 \item{step}{numeric value for the time increment, in days.  Default: 1.}
 
-\item{observer}{character value indicating the location of the observer.  There
-are many choices for this value.  The default value, \code{"@500"}, refers to the
+\item{observer}{character value indicating the location of the observer.  See
+\url{https://ssp.imcce.fr/webservices/miriade/howto/ephemcc/#howto-observer}
+for an explanation of this quantity.
+The default value, \code{"@500"}, refers to the
 centre of the earth.}
 
 \item{theory}{character value indicating the planetary theory, with choices
