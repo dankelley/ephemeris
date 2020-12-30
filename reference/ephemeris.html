@@ -136,9 +136,11 @@ already know the ideas and terminology of ephemeris computations.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>name</th>
-      <td><p>character value of object in question. There are many objects
-that can be checked, e.g. <code>"p:Sun"</code> for the sun and
-<code>"s:Moon"</code> for the moon.  Default: <code>"p:Sun"</code>.</p></td>
+      <td><p>character value of the object of interest.
+For an explanation of the possible choices, see
+<a href='https://ssp.imcce.fr/webservices/miriade/howto/ephemcc/#howto-sso'>https://ssp.imcce.fr/webservices/miriade/howto/ephemcc/#howto-sso</a>.
+The sun is indicated with <code>"p:Sun"</code>, and the moon with <code>"s:Moon"</code>.
+Default: <code>"p:Sun"</code>.</p></td>
     </tr>
     <tr>
       <th>longitude</th>
@@ -151,8 +153,9 @@ that can be checked, e.g. <code>"p:Sun"</code> for the sun and
     <tr>
       <th>t0</th>
       <td><p>POSIXct time (UTC) for the first retrieval, or a string from which
-<code><a href='https://rdrr.io/r/base/as.POSIXlt.html'>as.POSIXct()</a></code> can infer such a time. Default: start of present day.
-In Reference 1, this is called <code>ep</code> and referred to as the requested epoch.</p></td>
+<code><a href='https://rdrr.io/r/base/as.POSIXlt.html'>as.POSIXct()</a></code> can infer such a time.
+In Reference 1, this value is denoted <code>ep</code> and referred to as the epoch.
+Default: start of present day.</p></td>
     </tr>
     <tr>
       <th>nbd</th>
@@ -164,8 +167,10 @@ In Reference 1, this is called <code>ep</code> and referred to as the requested 
     </tr>
     <tr>
       <th>observer</th>
-      <td><p>character value indicating the location of the observer.  There
-are many choices for this value.  The default value, <code>"@500"</code>, refers to the
+      <td><p>character value indicating the location of the observer.  See
+<a href='https://ssp.imcce.fr/webservices/miriade/howto/ephemcc/#howto-observer'>https://ssp.imcce.fr/webservices/miriade/howto/ephemcc/#howto-observer</a>
+for an explanation of this quantity.
+The default value, <code>"@500"</code>, refers to the
 centre of the earth.</p></td>
     </tr>
     <tr>
