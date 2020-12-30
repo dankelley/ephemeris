@@ -16,7 +16,6 @@
 #' Apart from the listed parameters of this function, the other specifications for
 #' the query are set up in the same way as is used in the query-generation examples
 #' provided in Reference 1.
-#' For example, the 'observer' is set to `@500`, designating the centre of the earth.
 #'
 #' Users who are curious about the query should specify `debug=TRUE` when calling
 #' this function, and they are encouraged to contact the package author, if
@@ -33,7 +32,6 @@
 #' Apart from the listed parameters of this function, the other specifications for
 #' the query are set up in the same way as is used in the query-generation examples
 #' provided in Reference 1.
-#' For example, the 'observer' is set to `@500`, designating the centre of the earth.
 #'
 #' @param name character value of object in question. There are many objects
 #' that can be checked, e.g. `"p:Sun"` for the sun and
@@ -50,6 +48,10 @@
 #' @param nbd integer value of the number of times to be retrieved. Default: 5.
 #'
 #' @param step numeric value for the time increment, in days.  Default: 1.
+#'
+#' @param observer character value indicating the location of the observer.  There
+#' are many choices for this value.  The default value, `"@500"`, refers to the
+#' centre of the earth.
 #'
 #' @param theory character value indicating the planetary theory, with choices
 #' `"INPOP"`, `"DE200"`, `"BDL82"`, `"SLP98"`, `"DE403"`,
@@ -108,7 +110,7 @@
 #' @importFrom utils read.csv tail
 #' @export
 ephemeris <- function(name="p:Sun", longitude=0, latitude=0, t0=Sys.Date(), nbd=5, step=1,
-                     theory="INPOP", teph=1, tcoor=1, rplane=1, debug=FALSE)
+                      observer="@500", theory="INPOP", teph=1, tcoor=1, rplane=1, debug=FALSE)
 {
     ## Check argument validity
     if (!theory %in% c("INPOP", "DE200", "BDL82", "SLP98", "DE403", "DE405", "DE406", "DE430", "DE431"))
@@ -136,7 +138,7 @@ ephemeris <- function(name="p:Sun", longitude=0, latitude=0, t0=Sys.Date(), nbd=
                     "&-nbd=", nbd,
                     "&-step=", step, "d",
                     "&-tscale=UTC",
-                    "&-observer=@500",
+                    "&-observer=", observer,
                     "&-theory=", theory,
                     "&-teph=", teph,
                     "&-tcoor=", tcoor,

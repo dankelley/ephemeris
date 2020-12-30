@@ -11,6 +11,7 @@ ephemeris(
   t0 = Sys.Date(),
   nbd = 5,
   step = 1,
+  observer = "@500",
   theory = "INPOP",
   teph = 1,
   tcoor = 1,
@@ -34,6 +35,10 @@ In Reference 1, this is called \code{ep} and referred to as the requested epoch.
 \item{nbd}{integer value of the number of times to be retrieved. Default: 5.}
 
 \item{step}{numeric value for the time increment, in days.  Default: 1.}
+
+\item{observer}{character value indicating the location of the observer.  There
+are many choices for this value.  The default value, \code{"@500"}, refers to the
+centre of the earth.}
 
 \item{theory}{character value indicating the planetary theory, with choices
 \code{"INPOP"}, \code{"DE200"}, \code{"BDL82"}, \code{"SLP98"}, \code{"DE403"},
@@ -78,7 +83,6 @@ a planet).
 Apart from the listed parameters of this function, the other specifications for
 the query are set up in the same way as is used in the query-generation examples
 provided in Reference 1.
-For example, the 'observer' is set to \verb{@500}, designating the centre of the earth.
 
 Users who are curious about the query should specify \code{debug=TRUE} when calling
 this function, and they are encouraged to contact the package author, if
@@ -94,7 +98,6 @@ a planet).
 Apart from the listed parameters of this function, the other specifications for
 the query are set up in the same way as is used in the query-generation examples
 provided in Reference 1.
-For example, the 'observer' is set to \verb{@500}, designating the centre of the earth.
 }
 \examples{
 # Month-long time-series plot of Right Ascension and Declination
