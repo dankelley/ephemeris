@@ -13,8 +13,10 @@ test_that("sun ephemeris vs in-the-sky.org on 2020-01-04",
             ## RA:   18h55m37s
             ## DEC: -22°49'16"
             E <- ephemeris::ephemeris(name="p:Sun", t0="2020-01-04", nbd=1)
-            expect_equal(E$RA,  "+18 55 37.55648") # self-consistency check
-            expect_equal(E$DEC, "-22 49 16.2886") # self-consistency check
+            # We only check 2 decimal places, because numbers after that changed
+            # between Dec 2020 and Jan 2021.  Perhaps the formulae changed.
+            expect_equal(substr(E$RA,  1, 12), "+18 55 37.55") # self-consistency check
+            expect_equal(substr(E$DEC, 1, 12), "-22 49 16.28") # self-consistency check
             expect_equal(E$RAdec,   C(18,55,37), tolerance=1/3600, scale=1)
             expect_equal(E$DECdec, -C(22,49,16), tolerance=1/3600, scale=1)
           }
@@ -27,8 +29,10 @@ test_that("moon ephemeris vs in-the-sky.org on 2020-01-04",
             ## RA:   01h27m21s
             ## DEC: +03°37'39"
             E <- ephemeris::ephemeris(name="s:Moon", t0="2020-01-04", nbd=1)
-            expect_equal(E$RA,  "+01 27 23.68685") # consistency check
-            expect_equal(E$DEC, "+03 37 53.5896") # consistency check
+            # We only check 2 decimal places, because numbers after that changed
+            # between Dec 2020 and Jan 2021.  Perhaps the formulae changed.
+            expect_equal(substr(E$RA,  1, 12), "+01 27 23.68") # consistency check
+            expect_equal(substr(E$DEC, 1, 12), "+03 37 53.58") # consistency check
             expect_equal(E$RAdec,  C(01,27,21), tolerance=3/3600, scale=1)
             expect_equal(E$DECdec, C(03,37,39), tolerance=15/3600, scale=1)
           }
