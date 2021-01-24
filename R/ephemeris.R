@@ -114,8 +114,12 @@
 #'
 #' @importFrom utils read.csv tail
 #' @export
-ephemeris <- function(name="p:Sun", longitude=0, latitude=0, t0=Sys.Date(), nbd=5, step=1,
-                      observer="@500", theory="INPOP", teph=1, tcoor=1, rplane=1, debug=FALSE)
+ephemeris <- function(name="p:Sun",
+    longitude=0, latitude=0,
+    t0=Sys.Date(), nbd=5, step=1,
+    observer="@500", theory="INPOP",
+    teph=1, tcoor=1, rplane=1,
+    debug=FALSE)
 {
     ## Check argument validity
     if (!theory %in% c("INPOP", "DE200", "BDL82", "SLP98", "DE403", "DE405", "DE406", "DE430", "DE431"))
