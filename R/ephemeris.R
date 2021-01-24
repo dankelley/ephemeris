@@ -10,7 +10,7 @@
 #' The names of parameters, and their explanations, are patterned
 #' on Reference 1. It is not easy to guess these things.  For example,
 #' the moon is `"s:Moon"` (where the `s` indicates a satellite)
-#" and the sun is `"p:Sun"` (where the `p` indicates, confusingly,
+#' and the sun is `"p:Sun"` (where the `p` indicates, confusingly,
 #' a planet).
 #'
 #' Apart from the listed parameters of this function, the other specifications for
@@ -26,7 +26,7 @@
 #' The names of parameters, and their explanations, are patterned
 #' on Reference 1. It is not easy to guess these things.  For example,
 #' the moon is `"s:Moon"` (where the `s` indicates a satellite)
-#" and the sun is `"p:Sun"` (where the `p` indicates, confusingly,
+#' and the sun is `"p:Sun"` (where the `p` indicates, confusingly,
 #' a planet).
 #'
 #' Apart from the listed parameters of this function, the other specifications for

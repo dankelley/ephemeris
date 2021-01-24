@@ -83,6 +83,7 @@ already know the ideas and terminology of ephemeris computations.
 The names of parameters, and their explanations, are patterned
 on Reference 1. It is not easy to guess these things.  For example,
 the moon is \code{"s:Moon"} (where the \code{s} indicates a satellite)
+and the sun is \code{"p:Sun"} (where the \code{p} indicates, confusingly,
 a planet).
 
 Apart from the listed parameters of this function, the other specifications for
@@ -98,6 +99,7 @@ to this function.
 The names of parameters, and their explanations, are patterned
 on Reference 1. It is not easy to guess these things.  For example,
 the moon is \code{"s:Moon"} (where the \code{s} indicates a satellite)
+and the sun is \code{"p:Sun"} (where the \code{p} indicates, confusingly,
 a planet).
 
 Apart from the listed parameters of this function, the other specifications for
